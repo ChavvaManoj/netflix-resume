@@ -4,19 +4,19 @@ import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  base: "/netflix-resume/",
 
-  plugins: [
+  plugins:[
     react(),
     tailwindcss()
   ],
 
-  resolve: {
-    alias: {
+  resolve:{
+    alias:{
       "@": path.resolve(
         __dirname,
         "./src"
       )
     }
   }
+
 });

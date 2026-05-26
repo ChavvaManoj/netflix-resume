@@ -31,9 +31,7 @@ function App() {
 
   return (
 
-    <BrowserRouter
-      basename="/netflix-resume"
-    >
+    <BrowserRouter>
 
       <AnimatePresence mode="wait">
 
