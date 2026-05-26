@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ProfileSelector from "../components/ProfileSelector/ProfileSelector";
 import Navbar from "../components/Navbar/Navbar";
@@ -9,17 +9,21 @@ import SkillRow from "../components/SkillRow/SkillRow";
 import AchievementSection from "../components/AchievementCounter/AchievementSection";
 import ContactSection from "../components/Contact/ContactSection";
 import Footer from "../components/Footer/Footer";
-
+import EducationRow from"../components/EducationRow/EducationRow";
 const Home = () => {
 
-  const [selectedProfile, setSelectedProfile] =
-    useState(false);
+  const [
+    selectedProfile,
+    setSelectedProfile
+  ] = useState(false);
 
-  const [selectedSection, setSelectedSection] =
-    useState("");
+  const [
+    selectedSection,
+    setSelectedSection
+  ] = useState("");
 
   const handleProfileSelect = (
-    section: string
+    section:string
   ) => {
 
     setSelectedSection(section);
@@ -28,52 +32,115 @@ const Home = () => {
 
   };
 
+  useEffect(() => {
+
+    if(
+      selectedProfile &&
+      selectedSection
+    ){
+
+      setTimeout(()=>{
+
+        const id =
+          selectedSection
+          .toLowerCase()
+          .replace(/\s/g,"");
+
+        const section =
+          document.getElementById(
+            id
+          );
+
+        section?.scrollIntoView({
+          behavior:"smooth",
+          block:"start"
+        });
+
+      },1000);
+
+    }
+
+  },[
+    selectedProfile,
+    selectedSection
+  ]);
+
   return (
 
-    <main className="bg-black text-white min-h-screen">
+    <main
+      className="
+      bg-black
+      text-white
+      min-h-screen
+      "
+    >
 
       {!selectedProfile ? (
 
         <ProfileSelector
-          onSelect={handleProfileSelect}
+          onSelect={
+            handleProfileSelect
+          }
         />
 
       ) : (
 
-<div className="min-h-screen">
+        <>
 
-  <Navbar />
+          <Navbar
 
-  <HeroBanner />
+  onLogoClick={() => {
 
-  <ProjectRow />
+    setSelectedProfile(false);
 
-  <ExperienceRow />
+    setSelectedSection("");
 
-  <section
-    id="education"
-    className="section-padding"
-  >
-    <h2 className="text-4xl font-bold">
-      Education
-    </h2>
-  </section>
+  }}
 
-  <SkillRow />
+/>
 
-  <AchievementSection />
+          <HeroBanner />
 
-  <ContactSection />
+          <ProjectRow />
 
-<Footer />
+          <ExperienceRow />
 
-</div>
+          <EducationRow />
+
+          <SkillRow />
+
+          <section
+            id="aboutme"
+            className="
+            section-padding
+            "
+          >
+
+            <h2
+              className="
+              text-4xl
+              font-bold
+              "
+            >
+              About Me
+            </h2>
+
+          </section>
+
+          <AchievementSection />
+
+          <ContactSection />
+
+          <Footer />
+
+        </>
 
       )}
 
     </main>
 
   );
+
 };
 
 export default Home;

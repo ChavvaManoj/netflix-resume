@@ -1,4 +1,10 @@
-const Navbar = () => {
+interface Props{
+  onLogoClick:()=>void
+}
+
+const Navbar = ({
+  onLogoClick
+}:Props) => {
 
   const navigateToSection = (
     sectionId:string
@@ -39,20 +45,20 @@ const Navbar = () => {
       <div className="flex items-center gap-10">
 
         <h1
-          className="
-          text-red-600
-          text-3xl
-          font-bold
-          cursor-pointer
-          "
-          onClick={() =>
-            navigateToSection(
-              "home"
-            )
-          }
-        >
-          MC
-        </h1>
+
+  onClick={onLogoClick}
+
+  className="
+  text-red-600
+  text-3xl
+  font-bold
+  cursor-pointer
+  hover:scale-110
+  transition
+  "
+>
+  MC
+</h1>
 
         <div className="hidden md:flex gap-6">
 
