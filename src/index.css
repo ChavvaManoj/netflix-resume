@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-netflix-red: #E50914;
+  --color-netflix-black: #000000;
+  --color-netflix-gray: #141414;
+}
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  overflow-x:hidden;
+  background:#000;
+  color:white;
+  font-family: Inter, sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+.glass{
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.netflix-gradient{
+  background:
+  linear-gradient(
+    to top,
+    rgba(0,0,0,1),
+    rgba(0,0,0,.7),
+    rgba(0,0,0,.2)
+  );
+}
+
+.section-padding{
+  padding:4rem 6%;
+}
+
+.hide-scrollbar::-webkit-scrollbar{
+  display:none;
+}
+
+.hide-scrollbar{
+  scrollbar-width:none;
+}
