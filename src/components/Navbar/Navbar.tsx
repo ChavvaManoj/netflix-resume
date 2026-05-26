@@ -105,23 +105,21 @@ const Navbar = () => {
       <div className="flex gap-5">
 
         <a
-          href="https://github.com/"
-          target="_blank"
-          className="
-          hover:text-red-500
-          "
+        href="https://github.com/ChavvaManoj"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-red-500 transition"
         >
-          GitHub
+        GitHub
         </a>
 
-        <a
-          href="https://linkedin.com/"
-          target="_blank"
-          className="
-          hover:text-red-500
-          "
+                <a
+        href="https://www.linkedin.com/in/manoj-chavva-b26548217/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-red-500 transition"
         >
-          LinkedIn
+        LinkedIn
         </a>
 
         <a

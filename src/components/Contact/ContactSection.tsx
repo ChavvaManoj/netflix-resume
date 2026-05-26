@@ -57,9 +57,19 @@ const ContactSection = () => {
             LinkedIn
           </h3>
 
-          <p className="text-gray-400 mt-3">
-            linkedin.com/in/manoj
-          </p>
+          <a
+            href="https://www.linkedin.com/in/manoj-chavva-b26548217/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+            text-gray-400
+            mt-3
+            block
+            hover:text-red-500
+            "
+            >
+            linkedin.com/in/manoj-chavva
+            </a>
 
         </div>
 
@@ -75,9 +85,20 @@ const ContactSection = () => {
             GitHub
           </h3>
 
-          <p className="text-gray-400 mt-3">
-            github.com/manoj
-          </p>
+          <a
+  href="https://github.com/ChavvaManoj"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="
+  text-gray-400
+  mt-3
+  block
+  hover:text-red-500
+  transition
+  "
+>
+  github.com/ChavvaManoj
+</a>
 
         </div>
 

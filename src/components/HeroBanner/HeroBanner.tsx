@@ -1,12 +1,22 @@
 import { motion } from "framer-motion";
 
-import heroBanner from
-"../../assets/banners/hero-banner.jpg";
-
-import profileImage from
-"../../assets/images/manoj-profile.jpg";
+import heroBanner from "../../assets/banners/hero-banner.jpg";
+import profileImage from "../../assets/images/manoj-profile.jpg";
 
 const HeroBanner = () => {
+
+  const scrollToProjects = () => {
+
+    const projects =
+      document.getElementById(
+        "projects"
+      );
+
+    projects?.scrollIntoView({
+      behavior:"smooth"
+    });
+
+  };
 
   return (
 
@@ -27,16 +37,20 @@ const HeroBanner = () => {
       <img
         src={heroBanner}
         alt="banner"
+
         className="
         absolute
         inset-0
         w-full
         h-full
         object-cover
+        object-center
+        opacity-40
+        scale-110
         "
       />
 
-      {/* Overlay */}
+      {/* Netflix cinematic overlay */}
 
       <div
         className="
@@ -44,7 +58,22 @@ const HeroBanner = () => {
         inset-0
         bg-gradient-to-r
         from-black
-        via-black/80
+        via-black/90
+        to-black/40
+        "
+      />
+
+      {/* Bottom fade */}
+
+      <div
+        className="
+        absolute
+        bottom-0
+        left-0
+        right-0
+        h-[300px]
+        bg-gradient-to-t
+        from-black
         to-transparent
         "
       />
@@ -70,14 +99,23 @@ const HeroBanner = () => {
         className="
         relative
         z-10
-        max-w-5xl
+        max-w-6xl
         flex
+        flex-col
+        md:flex-row
         items-center
-        gap-10
+        gap-16
         "
       >
 
-        <img
+        {/* Profile Image */}
+
+        <motion.img
+
+          whileHover={{
+            scale:1.05
+          }}
+
           src={profileImage}
           alt="profile"
 
@@ -88,12 +126,22 @@ const HeroBanner = () => {
           object-cover
           border-4
           border-red-500
+          shadow-[0_0_50px_rgba(229,9,20,.6)]
           hidden
           md:block
           "
         />
 
-        <div>
+        {/* Text */}
+
+        <div
+          className="
+          bg-black/20
+          backdrop-blur-sm
+          p-6
+          rounded-xl
+          "
+        >
 
           <p
             className="
@@ -111,6 +159,7 @@ const HeroBanner = () => {
             text-5xl
             md:text-7xl
             font-bold
+            leading-tight
             "
           >
             Manoj Chavva
@@ -134,17 +183,29 @@ const HeroBanner = () => {
             text-gray-300
             mt-6
             leading-8
+            max-w-2xl
             "
           >
-            Building scalable
-            applications,
+            Building scalable applications,
             AI-powered systems,
             and modern user experiences.
           </p>
 
-          <div className="flex gap-4 mt-8">
+          <div
+            className="
+            flex
+            flex-wrap
+            gap-4
+            mt-8
+            "
+          >
+
+            {/* View Projects */}
 
             <button
+
+              onClick={scrollToProjects}
+
               className="
               bg-white
               text-black
@@ -152,21 +213,36 @@ const HeroBanner = () => {
               py-3
               rounded-md
               font-semibold
+              hover:scale-105
+              transition
               "
             >
               ▶ View Projects
             </button>
 
-            <button
-              className="
-              bg-gray-700
-              px-8
-              py-3
-              rounded-md
-              "
+
+            {/* Resume Download */}
+
+            <a
+
+                href={`${import.meta.env.BASE_URL}resume.pdf`}
+  target="_blank"
+  rel="noopener noreferrer"
+
+  className="
+  bg-gray-700
+  px-8
+  py-3
+  rounded-md
+  hover:bg-gray-600
+  hover:scale-105
+  transition
+  inline-flex
+  items-center
+  "
             >
-              Download Resume
-            </button>
+              View Resume
+            </a>
 
           </div>
 
