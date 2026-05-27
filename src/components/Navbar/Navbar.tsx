@@ -1,149 +1,222 @@
+import { useEffect, useState } from "react";
+
+const sections = [
+  "Home",
+  "Projects",
+  "Experience",
+  "Education",
+  "Skills",
+  "Contact"
+];
+
 interface Props{
   onLogoClick:()=>void
 }
 
 const Navbar = ({
   onLogoClick
-}:Props) => {
+}:Props)=>{
 
-  const navigateToSection = (
-    sectionId:string
-  ) => {
+const [scrolled,setScrolled]=
+useState(false);
 
-    const section =
-      document.getElementById(
-        sectionId
-      );
+const [active,setActive]=
+useState("Home");
 
-    section?.scrollIntoView({
-      behavior:"smooth"
-    });
+useEffect(()=>{
 
-  };
+const handleScroll=()=>{
 
-  return (
+setScrolled(
+window.scrollY>50
+);
 
-    <nav
-      className="
-      fixed
-      top-0
-      left-0
-      right-0
-      z-50
-      bg-black/80
-      backdrop-blur-md
-      px-[6%]
-      py-5
-      flex
-      items-center
-      justify-between
-      border-b
-      border-gray-800
-      "
-    >
+const ids=[
+"home",
+"projects",
+"experience",
+"education",
+"skills",
+"contact"
+];
 
-      <div className="flex items-center gap-10">
+ids.forEach((id)=>{
 
-        <h1
+const section=
+document.getElementById(id);
 
-  onClick={onLogoClick}
+if(section){
 
-  className="
-  text-red-600
-  text-3xl
-  font-bold
-  cursor-pointer
-  hover:scale-110
-  transition
-  "
->
-  MC
-</h1>
+const top=
+section.offsetTop-150;
 
-        <div className="hidden md:flex gap-6">
+const height=
+section.offsetHeight;
 
-          {[
-            {
-              name:"Projects",
-              id:"projects"
-            },
+if(
 
-            {
-              name:"Experience",
-              id:"experience"
-            },
+window.scrollY>=top &&
+window.scrollY<
+top+height
 
-            {
-              name:"Skills",
-              id:"skills"
-            },
+){
 
-            {
-              name:"Contact",
-              id:"contact"
-            }
+setActive(
 
-          ].map((item)=>(
+id.charAt(0)
+.toUpperCase()+
+id.slice(1)
 
-            <button
-              key={item.id}
+);
 
-              onClick={() =>
-                navigateToSection(
-                  item.id
-                )
-              }
+}
 
-              className="
-              hover:text-red-500
-              transition
-              "
-            >
-              {item.name}
-            </button>
+}
 
-          ))}
-
-        </div>
-
-      </div>
-
-      <div className="flex gap-5">
-
-        <a
-        href="https://github.com/ChavvaManoj"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-red-500 transition"
-        >
-        GitHub
-        </a>
-
-                <a
-        href="https://www.linkedin.com/in/manoj-chavva-b26548217/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:text-red-500 transition"
-        >
-        LinkedIn
-        </a>
-
-        <a
-          href="/resume.pdf"
-          download
-          className="
-          hover:text-red-500
-          "
-        >
-          Resume
-        </a>
-
-      </div>
-
-    </nav>
-
-  );
+});
 
 };
 
-export default Navbar;
+window.addEventListener(
+"scroll",
+handleScroll
+);
+
+return()=>{
+
+window.removeEventListener(
+"scroll",
+handleScroll
+);
+
+};
+
+},[]);
+
+return(
+
+<nav
+
+className={`
+
+fixed
+top-0
+left-0
+w-full
+z-50
+px-[6%]
+py-5
+flex
+justify-between
+items-center
+transition-all
+duration-500
+
+${scrolled
+
+?`
+bg-black/80
+backdrop-blur-md
+shadow-lg
+`
+
+:`
+bg-transparent
+`
+}
+
+`}
+
+>
+
+<h1
+
+onClick={onLogoClick}
+
+className="
+text-red-600
+text-4xl
+font-bold
+cursor-pointer
+hover:scale-110
+transition
+"
+
+>
+
+MC
+
+</h1>
+
+<div
+className="
+hidden
+md:flex
+gap-8
+"
+>
+
+{sections.map((item)=>(
+
+<button
+
+key={item}
+
+onClick={()=>{
+
+document
+.getElementById(
+item
+.toLowerCase()
+)
+?.scrollIntoView({
+
+behavior:
+"smooth"
+
+});
+
+}}
+
+className="
+relative
+text-gray-300
+hover:text-white
+transition
+"
+
+>
+
+{item}
+
+{active===item && (
+
+<div
+
+className="
+absolute
+w-full
+h-[2px]
+bg-red-600
+bottom-[-6px]
+left-0
+rounded-full
+"
+
+/>
+
+)}
+
+</button>
+
+))}
+
+</div>
+
+</nav>
+
+)
+
+}
+
+export default Navbar

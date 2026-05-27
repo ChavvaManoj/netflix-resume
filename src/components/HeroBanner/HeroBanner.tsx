@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import heroBanner from "../../assets/banners/hero-banner.jpg";
 import profileImage from "../../assets/images/manoj-profile.jpg";
+import { TypeAnimation } from "react-type-animation";
 
 const HeroBanner = () => {
 
@@ -112,6 +113,19 @@ const HeroBanner = () => {
 
         <motion.img
 
+          animate={{
+          y:[0,-8,0]
+          }}
+
+          transition={{
+          duration:4,
+          repeat:Infinity
+          }}
+
+          whileHover={{
+          scale:1.05
+          }}
+
           whileHover={{
             scale:1.05
           }}
@@ -165,18 +179,45 @@ const HeroBanner = () => {
             Manoj Chavva
           </h1>
 
-          <p
+          <div
             className="
             text-red-400
             text-xl
             mt-5
+            h-[40px]
             "
-          >
-            Full Stack Developer |
-            Spring Boot |
-            React |
-            AI Applications
-          </p>
+            >
+
+            <TypeAnimation
+
+            sequence={[
+
+            "Full Stack Developer",
+            1500,
+
+            "Spring Boot Developer",
+            1500,
+
+            "React Engineer",
+            1500,
+
+            "AI Builder",
+            1500,
+
+            "Scalable Systems Developer",
+            1500
+
+            ]}
+
+            wrapper="span"
+
+            speed={50}
+
+            repeat={Infinity}
+
+            />
+
+            </div>
 
           <p
             className="

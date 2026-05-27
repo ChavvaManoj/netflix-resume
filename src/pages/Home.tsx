@@ -10,6 +10,7 @@ import AchievementSection from "../components/AchievementCounter/AchievementSect
 import ContactSection from "../components/Contact/ContactSection";
 import Footer from "../components/Footer/Footer";
 import EducationRow from"../components/EducationRow/EducationRow";
+import ScrollProgress from "../components/ScrollProgress/ScrollProgress";
 const Home = () => {
 
   const [
@@ -98,6 +99,7 @@ const Home = () => {
   }}
 
 />
+        <ScrollProgress/>
 
           <HeroBanner />
 

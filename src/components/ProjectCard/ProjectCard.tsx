@@ -1,172 +1,236 @@
 import { motion } from "framer-motion";
+import { Code2, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
-interface ProjectProps {
-  title: string;
-  tech: string[];
-  description: string;
+interface Props{
+
+title:string;
+
+description:string;
+
+tech:string[];
+
 }
 
-const ProjectCard = ({
-  title,
-  tech,
-  description
-}: ProjectProps) => {
+const ProjectCard=({
 
-  const [expanded,setExpanded] =
-    useState(false);
+title,
+description,
+tech
 
-  return (
+}:Props)=>{
 
-    <motion.div
+const [expanded,setExpanded]=
+useState(false);
 
-      onHoverStart={() =>
-        setExpanded(true)
-      }
+return(
 
-      onHoverEnd={() =>
-        setExpanded(false)
-      }
+<motion.div
 
-      animate={{
-        scale: expanded ? 1.08 : 1,
-        y: expanded ? -20 : 0
-      }}
+onHoverStart={()=>
+setExpanded(true)
+}
 
-      transition={{
-        duration: .3
-      }}
+onHoverEnd={()=>
+setExpanded(false)
+}
 
-      className="
-      bg-[#181818]
-      rounded-xl
-      overflow-hidden
-      cursor-pointer
-      min-h-[250px]
-      relative
-      z-10
-      "
-    >
+whileHover={{
+scale:1.08,
+y:-50,
+zIndex:100
+}}
 
-      {/* Banner */}
+transition={{
+duration:.3
+}}
 
-      <div
-        className="
-        h-[140px]
-        bg-gradient-to-r
-        from-red-700
-        via-red-800
-        to-black
-        "
-      />
+className="
+relative
+bg-[#181818]
+rounded-xl
+overflow-hidden
+cursor-pointer
+shadow-xl
+"
 
-      <div className="p-5">
+>
 
-        <h3
-          className="
-          text-xl
-          font-bold
-          "
-        >
-          {title}
-        </h3>
+{/* Thumbnail */}
 
-        {expanded && (
+<div
+className="
+h-[180px]
+bg-gradient-to-br
+from-red-600
+to-black
+flex
+items-center
+justify-center
+"
+>
 
-          <motion.div
+<h2
+className="
+text-2xl
+font-bold
+px-6
+text-center
+"
+>
 
-            initial={{
-              opacity:0
-            }}
+{title}
 
-            animate={{
-              opacity:1
-            }}
+</h2>
 
-          >
+</div>
 
-            <p
-              className="
-              text-gray-400
-              mt-4
-              "
-            >
-              {description}
-            </p>
+{/* Expanded content */}
 
-            <div
-              className="
-              flex
-              gap-2
-              flex-wrap
-              mt-5
-              "
-            >
+<motion.div
 
-              {tech.map((item)=>(
+animate={{
 
-                <span
-                  key={item}
-                  className="
-                  px-3
-                  py-1
-                  rounded-full
-                  bg-red-900/50
-                  text-xs
-                  "
-                >
-                  {item}
-                </span>
+height:
+expanded
+? "auto"
+:80
 
-              ))}
+}}
 
-            </div>
+className="
+p-5
+overflow-hidden
+"
 
-            <div
-              className="
-              flex
-              gap-4
-              mt-6
-              "
-            >
+>
 
-              <button
-                className="
-                bg-white
-                text-black
-                px-4
-                py-2
-                rounded
-                text-sm
-                "
-              >
-                Demo
-              </button>
+<div
+className="
+flex
+gap-2
+mb-3
+"
+>
 
-              <button
-                className="
-                bg-gray-700
-                px-4
-                py-2
-                rounded
-                text-sm
-                "
-              >
-                GitHub
-              </button>
+<span
+className="
+bg-green-600
+px-2
+rounded
+text-sm
+"
+>
 
-            </div>
+⭐ Featured
 
-          </motion.div>
+</span>
 
-        )}
+<span
+className="
+bg-red-600
+px-2
+rounded
+text-sm
+"
+>
 
-      </div>
+🚀 Latest
 
-    </motion.div>
+</span>
 
-  );
+</div>
 
-};
+<p
+className="
+text-gray-300
+text-sm
+leading-6
+"
+>
 
-export default ProjectCard;
+{description}
+
+</p>
+
+<div
+className="
+flex
+flex-wrap
+gap-2
+mt-4
+"
+>
+
+{tech.map((item)=>(
+
+<span
+
+key={item}
+
+className="
+bg-gray-700
+px-3
+py-1
+rounded-full
+text-xs
+"
+
+>
+
+{item}
+
+</span>
+
+))}
+
+</div>
+
+<div
+className="
+flex
+gap-4
+mt-6
+"
+>
+
+<button
+className="
+bg-white
+text-black
+p-3
+rounded-full
+"
+>
+
+<Code2
+size={18}
+/>
+
+</button>
+
+<button
+className="
+bg-red-600
+p-3
+rounded-full
+"
+>
+
+<ExternalLink
+size={18}
+/>
+
+</button>
+
+</div>
+
+</motion.div>
+
+</motion.div>
+
+)
+
+}
+
+export default ProjectCard
