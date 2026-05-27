@@ -11,6 +11,9 @@ import ContactSection from "../components/Contact/ContactSection";
 import Footer from "../components/Footer/Footer";
 import EducationRow from"../components/EducationRow/EducationRow";
 import ScrollProgress from "../components/ScrollProgress/ScrollProgress";
+import Reveal from "../components/Reveal/Reveal";
+
+
 const Home = () => {
 
   const [
@@ -103,37 +106,55 @@ const Home = () => {
 
           <HeroBanner />
 
-          <ProjectRow />
+<Reveal>
+  <ProjectRow />
+</Reveal>
 
-          <ExperienceRow />
+<Reveal>
+  <ExperienceRow />
+</Reveal>
 
-          <EducationRow />
+<Reveal>
+  <EducationRow />
+</Reveal>
 
-          <SkillRow />
+<Reveal>
+  <SkillRow />
+</Reveal>
 
-          <section
-            id="aboutme"
-            className="
-            section-padding
-            "
-          >
+<Reveal>
 
-            <h2
-              className="
-              text-4xl
-              font-bold
-              "
-            >
-              About Me
-            </h2>
+<section
+id="aboutme"
+className="
+section-padding
+"
+>
 
-          </section>
+<h2
+className="
+text-4xl
+font-bold
+"
+>
 
-          <AchievementSection />
+About Me
 
-          <ContactSection />
+</h2>
 
-          <Footer />
+</section>
+
+</Reveal>
+
+<Reveal>
+  <AchievementSection />
+</Reveal>
+
+<Reveal>
+  <ContactSection />
+</Reveal>
+
+<Footer />
 
         </>
 

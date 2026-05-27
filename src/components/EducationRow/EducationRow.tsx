@@ -1,10 +1,7 @@
-import { education }
-from "../../data/education";
+import { education } from "../../data/education";
+import { motion } from "framer-motion";
 
-import { motion }
-from "framer-motion";
-
-const EducationRow = () => {
+const EducationRow=()=>{
 
 return(
 
@@ -163,8 +160,7 @@ space-y-2
 "
 >
 
-{item.highlights.map(
-(point)=>(
+{item.highlights?.map((point)=>(
 
 <li
 
@@ -180,9 +176,7 @@ text-gray-300
 
 </li>
 
-)
-
-)}
+))}
 
 </ul>
 

@@ -1,62 +1,45 @@
 import { motion } from "framer-motion";
 import { Code2, ExternalLink } from "lucide-react";
-import { useState } from "react";
 
 interface Props{
-
-title:string;
-
-description:string;
-
-tech:string[];
-
+  title:string;
+  description:string;
+  tech:string[];
 }
 
 const ProjectCard=({
-
-title,
-description,
-tech
-
+  title,
+  description,
+  tech
 }:Props)=>{
-
-const [expanded,setExpanded]=
-useState(false);
 
 return(
 
 <motion.div
 
-onHoverStart={()=>
-setExpanded(true)
-}
-
-onHoverEnd={()=>
-setExpanded(false)
-}
-
 whileHover={{
-scale:1.08,
-y:-50,
-zIndex:100
+  scale:1.05,
+  y:-15
 }}
 
 transition={{
-duration:.3
+  duration:.25
 }}
 
 className="
 relative
 bg-[#181818]
 rounded-xl
-overflow-hidden
+overflow-visible
 cursor-pointer
 shadow-xl
+hover:shadow-[0_0_30px_rgba(229,9,20,.3)]
+h-[420px]
+flex
+flex-col
 "
 
 >
-
-{/* Thumbnail */}
 
 <div
 className="
@@ -67,15 +50,20 @@ to-black
 flex
 items-center
 justify-center
+px-5
+overflow-y-auto
 "
 >
 
 <h2
 className="
-text-2xl
+text-lg
+md:text-xl
 font-bold
-px-6
 text-center
+leading-relaxed
+break-words
+w-full
 "
 >
 
@@ -85,24 +73,15 @@ text-center
 
 </div>
 
-{/* Expanded content */}
+{/* Content */}
 
-<motion.div
-
-animate={{
-
-height:
-expanded
-? "auto"
-:80
-
-}}
-
+<div
 className="
 p-5
-overflow-hidden
+flex-1
+flex
+flex-col
 "
-
 >
 
 <div
@@ -121,9 +100,7 @@ rounded
 text-sm
 "
 >
-
 ⭐ Featured
-
 </span>
 
 <span
@@ -134,9 +111,7 @@ rounded
 text-sm
 "
 >
-
 🚀 Latest
-
 </span>
 
 </div>
@@ -146,11 +121,10 @@ className="
 text-gray-300
 text-sm
 leading-6
+line-clamp-3
 "
 >
-
 {description}
-
 </p>
 
 <div
@@ -175,7 +149,6 @@ py-1
 rounded-full
 text-xs
 "
-
 >
 
 {item}
@@ -190,7 +163,8 @@ text-xs
 className="
 flex
 gap-4
-mt-6
+mt-auto
+pt-5
 "
 >
 
@@ -200,13 +174,11 @@ bg-white
 text-black
 p-3
 rounded-full
+hover:scale-110
+transition
 "
 >
-
-<Code2
-size={18}
-/>
-
+<Code2 size={18}/>
 </button>
 
 <button
@@ -214,18 +186,16 @@ className="
 bg-red-600
 p-3
 rounded-full
+hover:scale-110
+transition
 "
 >
-
-<ExternalLink
-size={18}
-/>
-
+<ExternalLink size={18}/>
 </button>
 
 </div>
 
-</motion.div>
+</div>
 
 </motion.div>
 
@@ -233,4 +203,4 @@ size={18}
 
 }
 
-export default ProjectCard
+export default ProjectCard;

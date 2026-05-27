@@ -1,40 +1,47 @@
-export const experiences = [
-  {
-    id:1,
-    title:"Full Stack Developer",
-    company:"NTRO Accounts Management System",
-    duration:"2024 - Present",
+export const experiences=[
 
-    technologies:[
-      "Spring Boot",
-      "React",
-      "MySQL"
-    ],
+{
+id:1,
 
-    achievements:[
-      "Developed scalable enterprise modules",
-      "Implemented workflow automation",
-      "Improved performance and UX"
-    ]
-  },
+role:"Full Stack Developer",
 
-  {
-    id:2,
-    title:"AI Applications Developer",
-    company:"Personal Projects",
+company:"NTRO Accounts Management System",
 
-    duration:"2025 - Present",
+duration:"2024 - Present",
 
-    technologies:[
-      "RAG",
-      "Ollama",
-      "OpenAI"
-    ],
+points:[
 
-    achievements:[
-      "Built enterprise RAG platform",
-      "Created AI workflow systems",
-      "Integrated local LLM pipelines"
-    ]
-  }
+"Developed scalable enterprise applications",
+
+"Built REST APIs using Spring Boot",
+
+"Created responsive interfaces using React",
+
+"Integrated financial workflows"
+
+]
+
+},
+
+{
+id:2,
+
+role:"AI Application Builder",
+
+company:"Personal Projects",
+
+duration:"2025 - Present",
+
+points:[
+
+"Built AI-powered applications",
+
+"Integrated Ollama and RAG systems",
+
+"Developed automation tools"
+
+]
+
+}
+
 ];
