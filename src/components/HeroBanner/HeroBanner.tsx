@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 import heroBanner from "../../assets/banners/hero-banner.jpg";
 import profileImage from "../../assets/images/manoj-profile.jpg";
+
 import { TypeAnimation } from "react-type-animation";
 
 const HeroBanner = () => {
@@ -38,7 +39,6 @@ const HeroBanner = () => {
       <img
         src={heroBanner}
         alt="banner"
-
         className="
         absolute
         inset-0
@@ -51,7 +51,7 @@ const HeroBanner = () => {
         "
       />
 
-      {/* Netflix cinematic overlay */}
+      {/* Netflix overlay */}
 
       <div
         className="
@@ -79,7 +79,7 @@ const HeroBanner = () => {
         "
       />
 
-      {/* Content */}
+      {/* Main Content */}
 
       <motion.div
 
@@ -113,25 +113,21 @@ const HeroBanner = () => {
 
         <motion.img
 
+          src={profileImage}
+          alt="profile"
+
           animate={{
-          y:[0,-8,0]
+            y:[0,-8,0]
           }}
 
           transition={{
-          duration:4,
-          repeat:Infinity
-          }}
-
-          whileHover={{
-          scale:1.05
+            duration:4,
+            repeat:Infinity
           }}
 
           whileHover={{
             scale:1.05
           }}
-
-          src={profileImage}
-          alt="profile"
 
           className="
           w-[180px]
@@ -146,7 +142,7 @@ const HeroBanner = () => {
           "
         />
 
-        {/* Text */}
+        {/* Text Content */}
 
         <div
           className="
@@ -179,6 +175,8 @@ const HeroBanner = () => {
             Manoj Chavva
           </h1>
 
+          {/* Typing animation */}
+
           <div
             className="
             text-red-400
@@ -186,38 +184,38 @@ const HeroBanner = () => {
             mt-5
             h-[40px]
             "
-            >
+          >
 
             <TypeAnimation
 
-            sequence={[
+              sequence={[
 
-            "Full Stack Developer",
-            1500,
+                "Full Stack Developer",
+                1500,
 
-            "Spring Boot Developer",
-            1500,
+                "Spring Boot Developer",
+                1500,
 
-            "React Engineer",
-            1500,
+                "React Engineer",
+                1500,
 
-            "AI Builder",
-            1500,
+                "AI Builder",
+                1500,
 
-            "Scalable Systems Developer",
-            1500
+                "Scalable Systems Developer",
+                1500
 
-            ]}
+              ]}
 
-            wrapper="span"
+              wrapper="span"
 
-            speed={50}
+              speed={50}
 
-            repeat={Infinity}
+              repeat={Infinity}
 
             />
 
-            </div>
+          </div>
 
           <p
             className="
@@ -231,6 +229,8 @@ const HeroBanner = () => {
             AI-powered systems,
             and modern user experiences.
           </p>
+
+          {/* Buttons */}
 
           <div
             className="
@@ -258,31 +258,37 @@ const HeroBanner = () => {
               transition
               "
             >
+
               ▶ View Projects
+
             </button>
 
-
-            {/* Resume Download */}
+            {/* Resume */}
 
             <a
 
-                href={`${import.meta.env.BASE_URL}resume.pdf`}
-  target="_blank"
-  rel="noopener noreferrer"
+              href={`${import.meta.env.BASE_URL}resume.pdf`}
 
-  className="
-  bg-gray-700
-  px-8
-  py-3
-  rounded-md
-  hover:bg-gray-600
-  hover:scale-105
-  transition
-  inline-flex
-  items-center
-  "
+              target="_blank"
+
+              rel="noopener noreferrer"
+
+              className="
+              bg-gray-700
+              px-8
+              py-3
+              rounded-md
+              hover:bg-gray-600
+              hover:scale-105
+              transition
+              inline-flex
+              items-center
+              "
+
             >
-              View Resume
+
+              📄 View Resume
+
             </a>
 
           </div>
