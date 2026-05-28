@@ -24,13 +24,17 @@ return(
 id="home"
 className="
 relative
-h-screen
+min-h-screen
+py-28
 overflow-hidden
 flex
 items-center
-px-[6%]
+px-6
+md:px-[6%]
 "
 >
+
+{/* Background */}
 
 <img
 
@@ -50,6 +54,8 @@ scale-110
 
 />
 
+{/* Overlay */}
+
 <div
 className="
 absolute
@@ -60,6 +66,8 @@ via-black/90
 to-black/40
 "
 />
+
+{/* Bottom fade */}
 
 <div
 className="
@@ -73,6 +81,8 @@ from-black
 to-transparent
 "
 />
+
+{/* Content */}
 
 <motion.div
 
@@ -94,14 +104,22 @@ className="
 relative
 z-10
 max-w-6xl
+w-full
+mx-auto
 flex
 flex-col
 md:flex-row
 items-center
-gap-16
+justify-center
+gap-10
+md:gap-16
+text-center
+md:text-left
 "
 
 >
+
+{/* Profile Image */}
 
 <motion.img
 
@@ -123,30 +141,45 @@ src={profileImage}
 alt="profile"
 
 className="
-w-[180px]
-h-[180px]
 rounded-full
 object-cover
 border-4
 border-red-500
 shadow-[0_0_50px_rgba(229,9,20,.6)]
-hidden
-md:block
+
+w-[140px]
+h-[140px]
+
+sm:w-[160px]
+sm:h-[160px]
+
+md:w-[180px]
+md:h-[180px]
+
+block
+mx-auto
+md:mx-0
 "
 
 />
+
+{/* Text Content */}
 
 <div
 className="
 bg-black/30
 backdrop-blur-md
-p-8
+p-6
+sm:p-8
 rounded-2xl
 border
 border-gray-700
 max-w-3xl
+w-full
 "
 >
+
+{/* Status */}
 
 <div
 className="
@@ -177,11 +210,15 @@ Open to Opportunities
 
 </div>
 
+{/* Name */}
+
 <h1
 className="
-text-5xl
+text-4xl
+sm:text-5xl
 md:text-7xl
 font-bold
+leading-tight
 "
 >
 
@@ -189,22 +226,28 @@ Manoj Chavva
 
 </h1>
 
+{/* Typing animation */}
+
 <div
 className="
 text-red-400
-text-xl
+text-base
+sm:text-lg
+md:text-xl
 mt-5
-h-[40px]
+min-h-[40px]
 "
 >
 
 <TypeAnimation
 
 sequence={[
+
 "Full Stack Developer",1500,
 "Spring Boot Developer",1500,
 "React Engineer",1500,
 "AI Builder",1500
+
 ]}
 
 wrapper="span"
@@ -217,12 +260,19 @@ repeat={Infinity}
 
 </div>
 
+{/* Description */}
+
 <p
 className="
 text-gray-300
 mt-6
-leading-8
+leading-7
+sm:leading-8
 max-w-2xl
+mx-auto
+md:mx-0
+text-sm
+sm:text-base
 "
 >
 
@@ -232,35 +282,89 @@ and modern user experiences.
 
 </p>
 
+{/* Socials */}
+
 <div
 className="
 flex
+justify-center
+md:justify-start
 gap-6
+flex-wrap
 mt-6
 text-gray-300
 "
 >
 
-<span className="hover:text-red-500 transition">
+<a
+
+href="https://github.com/ChavvaManoj"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+hover:text-red-500
+transition
+cursor-pointer
+"
+
+>
+
 GitHub
-</span>
 
-<span className="hover:text-red-500 transition">
+</a>
+
+<a
+
+href="https://www.linkedin.com/in/manoj-chavva-b26548217/"
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+hover:text-red-500
+transition
+cursor-pointer
+"
+
+>
+
 LinkedIn
-</span>
 
-<span className="hover:text-red-500 transition">
+</a>
+
+<a
+
+href="mailto:chavva.manoj@gmail.com"
+
+className="
+hover:text-red-500
+transition
+cursor-pointer
+"
+
+>
+
 Email
-</span>
+
+</a>
 
 </div>
+
+{/* Buttons */}
 
 <div
 className="
 flex
-flex-wrap
+flex-col
+sm:flex-row
 gap-4
 mt-8
+items-center
+md:items-start
 "
 >
 
@@ -277,6 +381,8 @@ rounded-md
 font-semibold
 hover:scale-105
 transition
+w-full
+sm:w-auto
 "
 
 >
@@ -301,6 +407,9 @@ rounded-md
 hover:bg-gray-600
 hover:scale-105
 transition
+w-full
+sm:w-auto
+text-center
 "
 
 >
@@ -311,11 +420,14 @@ transition
 
 </div>
 
+{/* Scroll indicator */}
+
 <div
 className="
 mt-10
 text-gray-500
 animate-bounce
+text-sm
 "
 >
 

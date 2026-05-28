@@ -1,64 +1,80 @@
-import { motion } from "framer-motion";
 import {
-  Code2,
-  ExternalLink
+Code2
 } from "lucide-react";
+
+import { useState } from "react";
 
 interface Props{
 title:string;
 description:string;
 tech:string[];
-isHovered:boolean;
+achievements:string[];
+github:string;
 }
 
 const ProjectCard=({
 title,
 description,
 tech,
-isHovered
+achievements,
+github
 }:Props)=>{
+
+const [expanded,setExpanded]=
+useState(false);
 
 return(
 
-<motion.div
+<div
 
-animate={{
+onMouseEnter={()=>
+setExpanded(true)
+}
 
-scale:isHovered?1.12:1,
-y:isHovered?-20:0,
-zIndex:isHovered?50:1
-
-}}
-
-transition={{
-duration:.35
-}}
+onMouseLeave={()=>
+setExpanded(false)
+}
 
 className="
-relative
+
 bg-[#181818]
+
+hover:-translate-y-3
+hover:shadow-[0_25px_60px_rgba(229,9,20,.35)]
+
+transition-all
+duration-300
+
 rounded-xl
 overflow-hidden
-cursor-pointer
+
 shadow-xl
-hover:shadow-[0_0_40px_rgba(229,9,20,.4)]
-h-[500px]
-flex
-flex-col
+border
+border-gray-800
+hover:border-red-600
+
+h-fit
 "
 
 >
 
+{/* Banner */}
+
 <div
 className="
 h-[180px]
+
 bg-gradient-to-br
 from-red-600
 to-black
+
 flex
+flex-col
 items-center
 justify-center
+
 px-6
+text-center
 "
 >
 
@@ -67,9 +83,7 @@ className="
 text-xl
 md:text-2xl
 font-bold
-text-center
 leading-relaxed
-break-words
 "
 >
 
@@ -77,62 +91,72 @@ break-words
 
 </h2>
 
+<a
+
+href={github}
+
+target="_blank"
+
+rel="noopener noreferrer"
+
+className="
+mt-5
+
+inline-flex
+items-center
+gap-2
+
+bg-white
+text-black
+
+px-4
+py-2
+
+rounded-md
+
+text-sm
+font-medium
+
+hover:scale-105
+transition
+
+relative
+z-[200]
+pointer-events-auto
+"
+
+>
+
+<Code2 size={16}/>
+
+View Code
+
+</a>
+
 </div>
+
+{/* Content */}
 
 <div
 className="
 p-5
-flex-1
-flex
-flex-col
 "
 >
-
-<div
-className="
-flex
-gap-2
-mb-4
-"
->
-
-<span
-className="
-bg-green-600
-px-2
-rounded
-text-sm
-"
->
-⭐ Featured
-</span>
-
-<span
-className="
-bg-red-600
-px-2
-rounded
-text-sm
-"
->
-🚀 Latest
-</span>
-
-</div>
+{/* Description */}
 
 <p
 className="
 text-gray-300
 leading-7
 text-sm
-flex-1
-overflow-auto
 "
 >
 
 {description}
 
 </p>
+
+{/* Tech Stack */}
 
 <div
 className="
@@ -169,44 +193,90 @@ transition
 
 </div>
 
+{/* Auto Hover Highlights */}
+
+<div
+
+className={`
+
+transition-all
+duration-500
+overflow-hidden
+
+${expanded
+
+?"max-h-[500px] opacity-100 mt-6"
+
+:"max-h-0 opacity-0"
+
+}
+
+`}
+
+>
+
 <div
 className="
-flex
-gap-4
-mt-6
+border-t
+border-gray-700
+pt-5
 "
 >
 
-<button
+<h3
 className="
-bg-white
-text-black
-p-3
-rounded-full
-hover:scale-110
-transition
+text-red-400
+font-semibold
+mb-4
 "
 >
-<Code2 size={18}/>
-</button>
 
-<button
+Key Highlights
+
+</h3>
+
+<div
 className="
-bg-red-600
-p-3
-rounded-full
-hover:scale-110
-transition
+max-h-[220px]
+overflow-y-auto
+pr-2
+space-y-4
+
+scrollbar-thin
+scrollbar-thumb-red-600
+scrollbar-track-transparent
 "
 >
-<ExternalLink size={18}/>
-</button>
+
+{achievements.map((item)=>(
+
+<div
+
+key={item}
+
+className="
+text-gray-300
+text-sm
+leading-7
+"
+
+>
+
+• {item}
+
+</div>
+
+))}
 
 </div>
 
 </div>
 
-</motion.div>
+</div>
+
+</div>
+
+</div>
 
 )
 

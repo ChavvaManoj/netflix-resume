@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import { skills } from "../../data/skills";
 
 const SkillRow=()=>{
@@ -17,51 +18,89 @@ py-24
 className="
 text-4xl
 font-bold
-mb-12
+mb-16
 "
 >
 
-Skills
+Engineering Stack
 
 </h2>
 
 <div
 className="
-grid
-md:grid-cols-2
-lg:grid-cols-3
-gap-8
+space-y-12
 "
 >
 
-{skills.map((skillGroup)=>(
+{skills.map((skillGroup,index)=>(
 
 <motion.div
 
 key={skillGroup.category}
 
-whileHover={{
-scale:1.03,
-y:-10
+initial={{
+opacity:0,
+y:40
+}}
+
+whileInView={{
+opacity:1,
+y:0
+}}
+
+transition={{
+duration:.5,
+delay:index*.08
+}}
+
+viewport={{
+once:true
 }}
 
 className="
-bg-[#181818]
-rounded-xl
-p-6
+bg-[#141414]
 border
-border-gray-700
+border-gray-800
+
+rounded-2xl
+
+p-8
+
 hover:border-red-600
-transition
+hover:shadow-[0_10px_40px_rgba(229,9,20,.15)]
+
+transition-all
+duration-300
 "
 
 >
+
+{/* Category */}
+
+<div
+className="
+flex
+items-center
+gap-4
+mb-8
+"
+>
+
+<div
+className="
+w-2
+h-10
+bg-red-600
+rounded-full
+"
+/>
+
+<div>
 
 <h3
 className="
 text-2xl
 font-bold
-mb-6
 "
 >
 
@@ -69,73 +108,61 @@ mb-6
 
 </h3>
 
-<div className="space-y-5">
 
-{skillGroup.items.map((skill)=>(
+</div>
 
-<div key={skill.name}>
+</div>
+
+{/* Skills */}
 
 <div
 className="
 flex
-justify-between
-mb-2
+flex-wrap
+gap-4
 "
 >
 
-<span>
-
-{skill.name}
-
-</span>
-
-<span
-className="
-text-red-500
-"
->
-
-{skill.level}%
-
-</span>
-
-</div>
-
-<div
-className="
-w-full
-h-3
-bg-gray-700
-rounded-full
-overflow-hidden
-"
->
+{skillGroup.items.map((skill)=>(
 
 <motion.div
 
-initial={{
-width:0
-}}
+key={skill}
 
-whileInView={{
-width:`${skill.level}%`
-}}
-
-transition={{
-duration:1
+whileHover={{
+scale:1.06,
+y:-4
 }}
 
 className="
-h-full
-bg-red-600
+px-5
+py-3
+
 rounded-full
+
+bg-[#1f1f1f]
+
+border
+border-gray-700
+
+text-gray-200
+font-medium
+
+hover:border-red-500
+hover:bg-red-600/10
+hover:text-white
+
+transition-all
+duration-300
+
+cursor-default
 "
 
-/>
+>
 
-</div>
+{skill}
 
-</div>
+</motion.div>
 
 ))}
 

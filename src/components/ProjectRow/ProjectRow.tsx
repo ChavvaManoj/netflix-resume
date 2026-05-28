@@ -1,16 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import {
+Swiper,
+SwiperSlide
+} from "swiper/react";
+
 import "swiper/css";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import {
+projects
+} from "../../data/projects";
 
-import { projects } from "../../data/projects";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import ProjectCard
+from "../ProjectCard/ProjectCard";
 
 const ProjectRow=()=>{
-
-const [hovered,setHovered]=
-useState<number|null>(null);
 
 return(
 
@@ -44,107 +46,56 @@ Featured Projects
 
 <Swiper
 
-spaceBetween={30}
+spaceBetween={16}
 
-slidesPerView={1.2}
+slidesPerView={1.1}
 
 breakpoints={{
 
+480:{
+slidesPerView:1.3,
+spaceBetween:20
+},
+
 640:{
-slidesPerView:2
+slidesPerView:2,
+spaceBetween:20
 },
 
 1024:{
-slidesPerView:4
+slidesPerView:3,
+spaceBetween:30
 },
 
 1440:{
-slidesPerView:5
+slidesPerView:4,
+spaceBetween:30
 }
 
 }}
 
 className="
 overflow-visible
-py-10
+py-20
+px-2
+
+relative
+z-0
 "
 
 >
 
-{projects.map((project,index)=>(
+{projects.map((project)=>(
 
 <SwiperSlide
+
 key={project.id}
-className="
-overflow-visible
-"
->
-
-<motion.div
-
-onHoverStart={()=>
-setHovered(index)
-}
-
-onHoverEnd={()=>
-setHovered(null)
-}
-
-animate={{
-
-x:
-
-hovered!==null
-
-?
-
-index<hovered
-
-?-40
-
-:
-
-index>hovered
-
-?40
-
-:0
-
-:0
-
-}}
-
-transition={{
-
-duration:.35,
-ease:"easeInOut"
-
-}}
-
-style={{
-
-transformOrigin:
-
-index===0
-
-?"left center"
-
-:
-
-index===projects.length-1
-
-?"right center"
-
-:
-
-"center center"
-
-}}
 
 className="
 overflow-visible
+relative
+z-0
 "
-
 >
 
 <ProjectCard
@@ -157,13 +108,15 @@ description={
 project.description
 }
 
-isHovered={
-hovered===index
+achievements={
+project.achievements
+}
+
+github={
+project.github
 }
 
 />
-
-</motion.div>
 
 </SwiperSlide>
 

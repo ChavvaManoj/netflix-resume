@@ -1,20 +1,30 @@
-import { useEffect, useState } from "react";
+import {
+Menu,
+X
+} from "lucide-react";
 
-const sections = [
-  "Home",
-  "Projects",
-  "Experience",
-  "Education",
-  "Skills",
-  "Contact"
+import {
+useEffect,
+useState
+} from "react";
+
+const sections=[
+
+"Home",
+"Projects",
+"Experience",
+"Education",
+"Skills",
+"Contact"
+
 ];
 
 interface Props{
-  onLogoClick:()=>void
+onLogoClick:()=>void
 }
 
-const Navbar = ({
-  onLogoClick
+const Navbar=({
+onLogoClick
 }:Props)=>{
 
 const [scrolled,setScrolled]=
@@ -22,6 +32,9 @@ useState(false);
 
 const [active,setActive]=
 useState("Home");
+
+const [mobileOpen,setMobileOpen]=
+useState(false);
 
 useEffect(()=>{
 
@@ -45,9 +58,7 @@ const ids=[
 for(const id of ids){
 
 const section=
-document.getElementById(
-id
-);
+document.getElementById(id);
 
 if(section){
 
@@ -60,7 +71,6 @@ section.offsetHeight;
 if(
 
 window.scrollY>=top &&
-
 window.scrollY<
 top+height
 
@@ -70,9 +80,7 @@ setActive(
 
 id.charAt(0)
 .toUpperCase()
-
 +
-
 id.slice(1)
 
 );
@@ -154,6 +162,7 @@ font-bold
 cursor-pointer
 hover:scale-110
 transition
+z-50
 "
 
 >
@@ -162,7 +171,7 @@ MC
 
 </h1>
 
-{/* Nav items */}
+{/* Desktop nav */}
 
 <div
 className="
@@ -186,8 +195,7 @@ item.toLowerCase()
 )
 ?.scrollIntoView({
 
-behavior:
-"smooth"
+behavior:"smooth"
 
 });
 
@@ -241,6 +249,104 @@ rounded-full
 ))}
 
 </div>
+
+{/* Mobile button */}
+
+<button
+
+onClick={()=>
+setMobileOpen(
+!mobileOpen
+)
+}
+
+className="
+md:hidden
+z-50
+"
+
+>
+
+{mobileOpen
+
+?<X size={32}/>
+
+:<Menu size={32}/>
+
+}
+
+</button>
+
+{/* Mobile menu */}
+
+{mobileOpen && (
+
+<div
+className="
+fixed
+inset-0
+bg-black
+flex
+flex-col
+items-center
+justify-center
+gap-8
+text-2xl
+z-40
+"
+>
+
+{sections.map((item)=>(
+
+<button
+
+key={item}
+
+onClick={()=>{
+
+document
+.getElementById(
+item.toLowerCase()
+)
+?.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+setMobileOpen(
+false
+);
+
+}}
+
+className={`
+
+${
+active===item
+
+?`
+text-red-600
+`
+
+:`
+text-white
+`
+}
+
+`}
+
+>
+
+{item}
+
+</button>
+
+))}
+
+</div>
+
+)}
 
 </nav>
 

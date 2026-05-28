@@ -1,30 +1,100 @@
 export const skills=[
 
 {
-category:"Frontend",
+category:"Backend Engineering",
+
 items:[
-{name:"React",level:90},
-{name:"TypeScript",level:85},
-{name:"Tailwind",level:88}
+
+"Spring Boot",
+"Java",
+"REST APIs",
+"Microservices",
+"FastAPI",
+"JWT Authentication",
+"WebSockets"
+
 ]
+
 },
 
 {
-category:"Backend",
+category:"AI & Intelligent Systems",
+
 items:[
-{name:"Spring Boot",level:92},
-{name:"Java",level:90},
-{name:"REST APIs",level:88}
+
+"RAG Pipelines",
+"OpenAI APIs",
+"Whisper",
+"FAISS",
+"Vector Search",
+"Semantic Retrieval",
+"Prompt Engineering"
+
 ]
+
 },
 
 {
-category:"AI / Tools",
+category:"Frontend Engineering",
+
 items:[
-{name:"Ollama",level:75},
-{name:"RAG",level:80},
-{name:"Git",level:90}
+
+"React",
+"TypeScript",
+"Tailwind CSS",
+"Framer Motion",
+"Responsive UI",
+"Swiper.js"
+
 ]
+
+},
+
+{
+category:"Cloud & DevOps",
+
+items:[
+
+"Docker",
+"CI/CD",
+"Linux",
+"Nginx",
+"GitHub Actions",
+"Multi-VM Deployment"
+
+]
+
+},
+
+{
+category:"Databases & Messaging",
+
+items:[
+
+"PostgreSQL",
+"MySQL",
+"Redis",
+"RabbitMQ",
+"JPA/Hibernate"
+
+]
+
+},
+
+{
+category:"Architecture & Concepts",
+
+items:[
+
+"Distributed Systems",
+"Event-Driven Architecture",
+"System Design",
+"Scalable Systems",
+"Real-Time Communication",
+"Performance Optimization"
+
+]
+
 }
 
-]
+];
