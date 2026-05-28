@@ -1,40 +1,48 @@
 import { motion } from "framer-motion";
-import { Code2, ExternalLink } from "lucide-react";
+import {
+  Code2,
+  ExternalLink
+} from "lucide-react";
 
 interface Props{
-  title:string;
-  description:string;
-  tech:string[];
+title:string;
+description:string;
+tech:string[];
+isHovered:boolean;
 }
 
 const ProjectCard=({
-  title,
-  description,
-  tech
+title,
+description,
+tech,
+isHovered
 }:Props)=>{
 
 return(
 
 <motion.div
 
-whileHover={{
-  scale:1.05,
-  y:-15
+animate={{
+
+scale:isHovered?1.12:1,
+y:isHovered?-20:0,
+zIndex:isHovered?50:1
+
 }}
 
 transition={{
-  duration:.25
+duration:.35
 }}
 
 className="
 relative
 bg-[#181818]
 rounded-xl
-overflow-visible
+overflow-hidden
 cursor-pointer
 shadow-xl
-hover:shadow-[0_0_30px_rgba(229,9,20,.3)]
-h-[420px]
+hover:shadow-[0_0_40px_rgba(229,9,20,.4)]
+h-[500px]
 flex
 flex-col
 "
@@ -50,20 +58,18 @@ to-black
 flex
 items-center
 justify-center
-px-5
-overflow-y-auto
+px-6
 "
 >
 
 <h2
 className="
-text-lg
-md:text-xl
+text-xl
+md:text-2xl
 font-bold
 text-center
 leading-relaxed
 break-words
-w-full
 "
 >
 
@@ -72,8 +78,6 @@ w-full
 </h2>
 
 </div>
-
-{/* Content */}
 
 <div
 className="
@@ -88,7 +92,7 @@ flex-col
 className="
 flex
 gap-2
-mb-3
+mb-4
 "
 >
 
@@ -119,12 +123,15 @@ text-sm
 <p
 className="
 text-gray-300
+leading-7
 text-sm
-leading-6
-line-clamp-3
+flex-1
+overflow-auto
 "
 >
+
 {description}
+
 </p>
 
 <div
@@ -132,7 +139,7 @@ className="
 flex
 flex-wrap
 gap-2
-mt-4
+mt-5
 "
 >
 
@@ -148,7 +155,10 @@ px-3
 py-1
 rounded-full
 text-xs
+hover:bg-red-600
+transition
 "
+
 >
 
 {item}
@@ -163,8 +173,7 @@ text-xs
 className="
 flex
 gap-4
-mt-auto
-pt-5
+mt-6
 "
 >
 

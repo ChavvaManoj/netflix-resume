@@ -32,23 +32,27 @@ window.scrollY>50
 );
 
 const ids=[
+
 "home",
 "projects",
 "experience",
 "education",
 "skills",
 "contact"
+
 ];
 
-ids.forEach((id)=>{
+for(const id of ids){
 
 const section=
-document.getElementById(id);
+document.getElementById(
+id
+);
 
 if(section){
 
 const top=
-section.offsetTop-150;
+section.offsetTop-200;
 
 const height=
 section.offsetHeight;
@@ -56,6 +60,7 @@ section.offsetHeight;
 if(
 
 window.scrollY>=top &&
+
 window.scrollY<
 top+height
 
@@ -64,16 +69,21 @@ top+height
 setActive(
 
 id.charAt(0)
-.toUpperCase()+
+.toUpperCase()
+
++
+
 id.slice(1)
 
 );
 
-}
+break;
 
 }
 
-});
+}
+
+}
 
 };
 
@@ -81,6 +91,8 @@ window.addEventListener(
 "scroll",
 handleScroll
 );
+
+handleScroll();
 
 return()=>{
 
@@ -129,6 +141,8 @@ bg-transparent
 
 >
 
+{/* Logo */}
+
 <h1
 
 onClick={onLogoClick}
@@ -148,6 +162,8 @@ MC
 
 </h1>
 
+{/* Nav items */}
+
 <div
 className="
 hidden
@@ -166,8 +182,7 @@ onClick={()=>{
 
 document
 .getElementById(
-item
-.toLowerCase()
+item.toLowerCase()
 )
 ?.scrollIntoView({
 
@@ -178,12 +193,26 @@ behavior:
 
 }}
 
-className="
+className={`
+
 relative
-text-gray-300
+transition-all
+duration-300
+
+${
+active===item
+
+?`
+text-white
+`
+
+:`
+text-gray-400
 hover:text-white
-transition
-"
+`
+}
+
+`}
 
 >
 
@@ -195,11 +224,11 @@ transition
 
 className="
 absolute
+left-0
+bottom-[-6px]
 w-full
 h-[2px]
 bg-red-600
-bottom-[-6px]
-left-0
 rounded-full
 "
 
@@ -219,4 +248,4 @@ rounded-full
 
 }
 
-export default Navbar
+export default Navbar;

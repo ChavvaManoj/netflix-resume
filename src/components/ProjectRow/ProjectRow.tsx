@@ -1,80 +1,180 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 
-import { projects } from "../../data/projects";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
+import { projects } from "../../data/projects";
 import ProjectCard from "../ProjectCard/ProjectCard";
 
-const ProjectRow = () => {
+const ProjectRow=()=>{
 
-  return (
+const [hovered,setHovered]=
+useState<number|null>(null);
 
-    <section
-      id="projects"
-      className="section-padding"
-    >
+return(
 
-      <h2
-        className="
-        text-4xl
-        font-bold
-        "
-      >
-        Continue Watching
-      </h2>
+<section
+id="projects"
+className="section-padding"
+>
 
-      <p
-        className="
-        text-gray-400
-        mt-2
-        mb-8
-        "
-      >
-        Featured Projects
-      </p>
+<h2
+className="
+text-4xl
+font-bold
+"
+>
 
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1.2}
+Continue Watching
 
-        breakpoints={{
-          640:{
-            slidesPerView:2
-          },
+</h2>
 
-          1024:{
-            slidesPerView:4
-          },
+<p
+className="
+text-gray-400
+mt-2
+mb-8
+"
+>
 
-          1440:{
-            slidesPerView:5
-          }
-        }}
-      >
+Featured Projects
 
-        {projects.map((project)=>(
+</p>
 
-          <SwiperSlide
-            key={project.id}
-          >
+<Swiper
 
-            <ProjectCard
-              title={project.title}
-              tech={project.tech}
-              description={project.description}
-            />
+spaceBetween={30}
 
-          </SwiperSlide>
+slidesPerView={1.2}
 
-        ))}
+breakpoints={{
 
-      </Swiper>
+640:{
+slidesPerView:2
+},
 
-    </section>
+1024:{
+slidesPerView:4
+},
 
-  );
+1440:{
+slidesPerView:5
+}
 
-};
+}}
+
+className="
+overflow-visible
+py-10
+"
+
+>
+
+{projects.map((project,index)=>(
+
+<SwiperSlide
+key={project.id}
+className="
+overflow-visible
+"
+>
+
+<motion.div
+
+onHoverStart={()=>
+setHovered(index)
+}
+
+onHoverEnd={()=>
+setHovered(null)
+}
+
+animate={{
+
+x:
+
+hovered!==null
+
+?
+
+index<hovered
+
+?-40
+
+:
+
+index>hovered
+
+?40
+
+:0
+
+:0
+
+}}
+
+transition={{
+
+duration:.35,
+ease:"easeInOut"
+
+}}
+
+style={{
+
+transformOrigin:
+
+index===0
+
+?"left center"
+
+:
+
+index===projects.length-1
+
+?"right center"
+
+:
+
+"center center"
+
+}}
+
+className="
+overflow-visible
+"
+
+>
+
+<ProjectCard
+
+title={project.title}
+
+tech={project.tech}
+
+description={
+project.description
+}
+
+isHovered={
+hovered===index
+}
+
+/>
+
+</motion.div>
+
+</SwiperSlide>
+
+))}
+
+</Swiper>
+
+</section>
+
+)
+
+}
 
 export default ProjectRow;

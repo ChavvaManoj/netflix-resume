@@ -12,7 +12,7 @@ import Footer from "../components/Footer/Footer";
 import EducationRow from"../components/EducationRow/EducationRow";
 import ScrollProgress from "../components/ScrollProgress/ScrollProgress";
 import Reveal from "../components/Reveal/Reveal";
-
+import CursorGlow from "../components/CursorGlow/CursorGlow";
 
 const Home = () => {
 
@@ -104,7 +104,9 @@ const Home = () => {
 />
         <ScrollProgress/>
 
-          <HeroBanner />
+        <CursorGlow/> 
+
+        <HeroBanner />
 
 <Reveal>
   <ProjectRow />
